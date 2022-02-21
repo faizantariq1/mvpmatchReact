@@ -49,7 +49,12 @@ const SearchResultsScreen = ({ navigation, route }) => {
             if (movieShowHideList && movieShowHideList.length > 0) {
                 results = filterArrayFromArray(results, movieShowHideList)
             }
-            setSearchResults(searchResults.concat(results))
+            var filteredArray = results.filter(function (itm) {
+                return itm.gender === null || itm.gender === undefined;
+            });
+
+            setSearchResults(searchResults.concat(filteredArray))
+            // setSearchResults(searchResults.concat(results))
             dispatch(listMovieShowIdle())
         }
 
